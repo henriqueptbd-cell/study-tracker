@@ -50,6 +50,8 @@ Como usuário, quero acessar o Study Tracker online pelo celular.
 - localStorage funcionando, dados persistem ao fechar o navegador
 - Navegação em etapas funcionando corretamente
 - Botão de remover disciplina funcionando
+- Formulário do curso vira título após salvar
+- Botão de editar permite alterar os dados do curso
 - Deploy realizado no Vercel
 - Link: https://study-tracker-iota-six.vercel.app/
 
@@ -58,7 +60,9 @@ Como usuário, quero acessar o Study Tracker online pelo celular.
 - Branches e Pull Request no GitHub
 - Operador ternário
 - Funções com parâmetros e return
+- Modificações independentes no CSS
 - Parte da lógica desenvolvida com auxílio de IA
 
 ## Pendências para o Sprint 3
-- Formulário do curso virar título após salvar
+- Adicionar assuntos dentro das disciplinas
+- Marcar último assunto estudado
