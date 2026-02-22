@@ -81,3 +81,15 @@ ul li {
     border-bottom: 1px solid #eee;
     font-size: 14px;
 }
+
+/* transição para etapas */
+
+section {
+    transition: opacity 0.3s ease;
+}
+
+.etapa-concluida h2::after {
+    content: "✔";
+    color: #27ae60;
+    font-size: 16px;
+}
