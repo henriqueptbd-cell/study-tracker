@@ -1,44 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Study Tracker</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
     <header>
-        <h1>Study Tracker</h1>
-        <p> Organize sua Graduação</p>
+      <h1>Study Tracker</h1>
+      <p>Organize sua Graduação</p>
     </header>
 
     <main>
-        <!-- Seção 1: Cadastro do curso -->
+      <!-- Seção 1: Cadastro do curso -->
 
-        <section id="secao-curso">
-            <h2>Meu Curso</h2>
-            <form id="form-curso">
-                <input type="text" id="nome-curso" placeholder="Nome do Curso" required>
-                <input type="text" id="nome-faculdade" placeholder="Nome da Faculdade" required>
-                <button type="submit">Salvar Curso</button>
-            </form>
-            <div id="info-curso"></div>
-        </section>
+      <section id="secao-curso">
+        <h2>Meu Curso</h2>
+        <form id="form-curso">
+          <input
+            type="text"
+            id="nome-curso"
+            placeholder="Nome do Curso"
+            required
+          />
+          <input
+            type="text"
+            id="nome-faculdade"
+            placeholder="Nome da Faculdade"
+            required
+          />
+          <button type="submit">Salvar Curso</button>
+        </form>
+        <div id="info-curso"></div>
+      </section>
 
-        <!-- Seção 2: Cadastro das disciplinas -->
+      <!-- Seção 2: Cadastro das disciplinas -->
 
-        <section id="secao-disciplinas">
-            <h2>Minhas Disciplinas</h2>
-            <form id="form-disciplina">
-                <input type="text" id="nome-disciplina" placeholder="Nome da Disciplina" required>
-                <button type="submit">Adicionar Disciplina</button>
-            </form>
-            <div id="lista-disciplinas"></div>
-        </section>
-
+      <section id="secao-disciplinas">
+        <h2>Minhas Disciplinas</h2>
+        <form id="form-disciplina">
+          <input
+            type="text"
+            id="nome-disciplina"
+            placeholder="Nome da Disciplina"
+            required
+          />
+          <button type="submit">Adicionar Disciplina</button>
+        </form>
+        <div id="lista-disciplinas"></div>
+      </section>
     </main>
 
     <script src="assets/js/app.js"></script>
-</body>
+  </body>
 </html>
