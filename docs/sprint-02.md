@@ -43,3 +43,22 @@ Como usuário, quero acessar o Study Tracker online pelo celular.
 
 ## Referências e aprendizados
 - DRY — Don't Repeat Yourself.
+
+## Conclusão do Sprint
+
+- Merge de duas branches realizado com sucesso via Pull Request
+- localStorage funcionando, dados persistem ao fechar o navegador
+- Navegação em etapas funcionando corretamente
+- Botão de remover disciplina funcionando
+- Deploy realizado no Vercel
+- Link: https://study-tracker-iota-six.vercel.app/
+
+## Aprendizados
+- localStorage, JSON.stringify e JSON.parse
+- Branches e Pull Request no GitHub
+- Operador ternário
+- Funções com parâmetros e return
+- Parte da lógica desenvolvida com auxílio de IA
+
+## Pendências para o Sprint 3
+- Formulário do curso virar título após salvar
