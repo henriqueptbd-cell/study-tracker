@@ -50,13 +50,23 @@ document.addEventListener("DOMContentLoaded", function () {
   //Mostra o curso na tela e Libera a seção de disciplinas
   function mostrarCurso(curso, faculdade) {
     infoCurso.innerHTML = `
-              <p><strong>Curso:</strong> ${curso}</p>
-              <p><strong>Faculdade:</strong> ${faculdade}</p>
+              <h3><strong>${curso}</strong></h3>
+              <h3>${faculdade}</h3>
+              <button id="btn-editar-curso">Editar</button>
           `;
+
+    document.getElementById("form-curso").style.display = "none";
     document.getElementById("secao-curso").classList.add("etapa-concluida");
     if (secaoDisciplinas) {
       secaoDisciplinas.style.display = "block";
     }
+
+    document
+      .getElementById("btn-editar-curso")
+      .addEventListener("click", function () {
+        document.getElementById("form-curso").style.display = "block";
+        infoCurso.innerHTML = "";
+      });
   }
 
   //Adiciona um item na lista visual com botão de remover
