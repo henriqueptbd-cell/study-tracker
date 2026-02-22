@@ -42,3 +42,4 @@ Como usuário, quero acessar o Study Tracker online pelo celular.
 - Anotações dentro das disciplinas
 
 ## Referências e aprendizados
+- DRY — Don't Repeat Yourself.
