@@ -23,3 +23,11 @@ HTML, CSS e JavaScript puro (Vanilla JS)
 
 ## Referencias e Aprendizados
 - **Clean Code** - Livro de Robert C. Martin (Uncle Bob) sobre boas praticas de código limpo.
+
+## Conclusão do Sprint
+
+- Entrega realizada com sucesso
+- Formulário de curso funcionando, exibe nome do curso e faculdade na tela
+- Formulário de disciplinas funcionando, lista acumula corretamente
+- Dados são perdidos ao recarregar — previsto, será resolvido no Sprint 2
+- Aprendizados: DOM, addEventListener, preventDefault, innerHTML, template strings, appendChild
