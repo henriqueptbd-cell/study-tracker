@@ -20,3 +20,6 @@ Data de término: 26/02/2026 (1 semana)
 
 ## Tecnologias
 HTML, CSS e JavaScript puro (Vanilla JS)
+
+## Referencias e Aprendizados
+- **Clean Code** - Livro de Robert C. Martin (Uncle Bob) sobre boas praticas de código limpo.
