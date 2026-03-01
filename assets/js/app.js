@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
     item.setAttribute("data-index", index);
     item.innerHTML = `
             <p>📚 ${disciplina}
+                <button onclick="window.location.href='disciplina.html?index=${index}'">Acessar</button>
                 <button onclick="removerDisciplina(${index})">Remover</button>
             </p>
         `;
