@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Disciplina - Study Tracker</title>
+</head>
+<body>
+    <header>
+        <h1>Study Tracker</h1>
+        <p>Organize sua Graduação</p>
+    </header>
+
+    <main>
+
+        <!-- botão de voltar -->
+         <div id="btn-voltat-container">
+            <button id = "btn-voltar">Voltar</button>
+         </div>
+
+        <!-- Nome da disciplina -->
+         <section id="secao-titulo-disciplina">
+            <h2 id="titulo-disciplina">Carregando...</h2>
+        </section>
+
+        <!-- Seção de assuntos -->
+         <section id="form-assunto">
+            <h2>Assuntos</h2>
+            <form id="form-assunto">
+                <input type="text" id="nome-assunto" placeholder="Nome do assunto" required>
+                <button type="submit">Adicionar Assunto</button>
+            </form>
+            <div id="lista-assuntos"></div>
+         </section>
+
+    </main>
+    <script>src="assets/js/disciplina.js"</script>
+
+</body>
+</html>
