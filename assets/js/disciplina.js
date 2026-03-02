@@ -1,105 +1,76 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Pega o id da disciplina pela URL
-  const params = new URLSearchParams(window.location.search);
-  const index = params.get("index");
 
-  // carrega o nome da disciplina
-  const disciplinas = JSON.parse(localStorage.getItem("disciplinas")) || [];
-  const nomeDisciplina = disciplinas[index];
+    const params = new URLSearchParams(window.location.search)
+    const index = params.get("id")
 
-  //Mostra o nome da disciplina como título
-  if (nomeDisciplina) {
-    document.getElementById("titulo-disciplina").textContent = nomeDisciplina;
-    document.title = `${nomeDisciplina} | Study Tracker`;
-  }
+    const disciplinas = JSON.parse(localStorage.getItem("disciplinas")) || []
+    const nomeDisciplina = disciplinas[index]
 
-  // Botão de Voltar
-  document.getElementById("btn-voltar").addEventListener("click", function () {
-    window.location.href = "index.html";
-  });
+    if (nomeDisciplina) {
+        document.getElementById("titulo-disciplina").textContent = nomeDisciplina
+        document.title = nomeDisciplina + " — Study Tracker"
+    }
 
-  // Carrega os elementos salvos
-  carregarAssuntos();
+    document.getElementById("btn-voltar").addEventListener("click", function () {
+        window.location.href = "index.html"
+    })
 
-  // Evento do formulario Assunto
-  const formAssunto = document.getElementById("form-assunto");
-  const nomeAssunto = document.getElementById("nome-assunto");
-  const listaAssuntos = document.getElementById("lista-assuntos");
+    const formAssunto = document.getElementById("form-assunto")
+    const nomeAssunto = document.getElementById("nome-assunto")
+    const listaAssuntos = document.getElementById("lista-assuntos")
 
-  formAssunto.addEventListener("submit", function (event) {
-    event.preventDefault(); //impede o comportamento padrão do formulário
+    carregarAssuntos()
 
-    const assunto = nomeAssunto.value;
+    formAssunto.addEventListener("submit", function (event) {
+        event.preventDefault()
+        const assunto = nomeAssunto.value.trim()
+        if (!assunto) return
 
-    // Pega os assuntos dessa Disciplina e adiciona o novo
-    const assuntos = getAssuntos(index);
-    assuntos.push({
-      nome: assunto,
-      subtopicos: [],
-      anotacao: "",
-    });
-    salvarAssuntos(assuntos);
+        const assuntos = getAssuntos()
+        assuntos.push({
+            nome: assunto,
+            subtopicos: [],
+            anotacao: ""
+        })
+        salvarAssuntos(assuntos)
+        renderizarAssuntos(assuntos)
+        nomeAssunto.value = ""
+    })
 
-    renderizarAssuntos(assuntos);
-    nomeAssunto.value = "";
-  });
+    function getAssuntos() {
+        const dados = localStorage.getItem("assuntos_" + index)
+        return dados ? JSON.parse(dados) : []
+    }
 
-  // Retorna os assuntos dessa disciplina do localStorage
-  function getAssuntos() {
-    const chave = "assuntos_" + index;
-    const dados = localStorage.getItem(chave);
-    return dados ? JSON.parse(dados) : [];
-  }
+    function salvarAssuntos(assuntos) {
+        localStorage.setItem("assuntos_" + index, JSON.stringify(assuntos))
+    }
 
-  // salva assuntos no local Storage
-  function salvarAssuntos(assuntos) {
-    const chave = "assuntos_" + index;
-    localStorage.setItem(chave, JSON.stringify(assuntos));
-  }
+    function carregarAssuntos() {
+        renderizarAssuntos(getAssuntos())
+    }
 
-  // Carrega os assuntos salvos na tela
-  function carregarAssuntos() {
-    const assuntos = getAssuntos();
-    renderizarAssuntos(assuntos);
-  }
-
-  // Renderiza todos os assuntos na tela;
-  function renderizarAssuntos(assuntos) {
-    listaAssuntos.innerHTML = "";
-    assuntos.forEach(function (assunto, i) {
-      const item = document.createElement("div");
-      item.classList.add("assunto-item");
-      item.innerHTML = `
-                <div class = "assunto-header">
-                    <span class = "assunto-titulo">📖 ${assunto.nome}</span>
-                    <button class = "btn-remover-assunto" onclick = "removerAssunto(${i})">Remover</button>
+    function renderizarAssuntos(assuntos) {
+        listaAssuntos.innerHTML = ""
+        assuntos.forEach(function (assunto, i) {
+            const item = document.createElement("div")
+            item.classList.add("assunto-item")
+            item.innerHTML = `
+                <div class="assunto-header">
+                    <span class="assunto-titulo">📖 ${assunto.nome}</span>
+                    <button class="btn-remover-assunto" onclick="removerAssunto(${i})">Remover</button>
                 </div>
-
-                <!-- Subtopicos -->
-                <div class = "subtopicos-lista" id = "subtopicos-${i}>
-                    ${assunto.subtopicos
-                      .map(
-                        (sub, si) => `
-                        <div class="subtopico-item">• ${sub}</div>
-                    `,
-                      )
-                      .join("")}
+                <div class="subtopicos-lista">
+                    ${assunto.subtopicos.map(sub => `<div class="subtopico-item">• ${sub}</div>`).join("")}
                 </div>
-                <input type="text" placeholder="Adicionar subtópico" id="input-sub-${i}">
+                <input type="text" id="input-sub-${i}" placeholder="Adicionar subtópico">
                 <button onclick="adicionarSubtopico(${i})">+ Subtópico</button>
+                <textarea id="anotacao-${i}" placeholder="Anotação livre..." onblur="salvarAnotacao(${i})">${assunto.anotacao}</textarea>
+            `
+            listaAssuntos.appendChild(item)
+        })
+    }
 
-                 <!-- Anotação -->
-                <textarea 
-                    id="anotacao-${i}" 
-                    placeholder="Anotação livre..."
-                    onblur="salvarAnotacao(${i})"
-                >${assunto.anotacao}</textarea>
-            `;
-      listaAssuntos.appendChild(item);
-    });
-  }
-
-   // Remove um assunto
     window.removerAssunto = function (i) {
         const assuntos = getAssuntos()
         assuntos.splice(i, 1)
@@ -107,19 +78,16 @@ document.addEventListener("DOMContentLoaded", function () {
         renderizarAssuntos(assuntos)
     }
 
-    // Adiciona um subtópico
     window.adicionarSubtopico = function (i) {
         const input = document.getElementById("input-sub-" + i)
-        const texto = input.value
+        const texto = input.value.trim()
         if (!texto) return
-
         const assuntos = getAssuntos()
         assuntos[i].subtopicos.push(texto)
         salvarAssuntos(assuntos)
         renderizarAssuntos(assuntos)
     }
 
-    // Salva a anotação quando o usuário sai do campo
     window.salvarAnotacao = function (i) {
         const textarea = document.getElementById("anotacao-" + i)
         const assuntos = getAssuntos()
@@ -127,5 +95,4 @@ document.addEventListener("DOMContentLoaded", function () {
         salvarAssuntos(assuntos)
     }
 
-
-});
+})
